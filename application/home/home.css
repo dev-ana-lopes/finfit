@@ -1,0 +1,87 @@
+@import "../styles/global.css";
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.menu {
+    text-align: end;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.menu-itens {
+    display: flex;
+    align-self: auto;
+}
+
+.navbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.menu li.login a {
+    border: 1px solid var(--text-color);
+    padding: 5px 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    color: var(--text-color);
+}
+
+.menu li.signup a {
+    border: 1px solid var(--text-color);
+    padding: 5px 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    color: #41521F;
+    background-color: var(--text-color);
+}
+
+header {
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    padding: 10px 0;
+}
+
+.logo img {
+    width: 180px;
+    height: 140px;
+    overflow: hidden;
+}
+
+.logo {
+    text-align: start;
+}
+
+header nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+header nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+header nav ul li a {
+    text-decoration: none;
+    color: var(--text-color);
+}
+
+footer {
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    text-align: center;
+    padding: 10px 0;
+}
