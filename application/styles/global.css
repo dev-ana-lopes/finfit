@@ -1,7 +1,11 @@
 :root {
-    --primary-color: #41521F;
-    --secundary-color: #A89F68;
-    --background-color: #D0B17A;
-    --text-color: #F5C396;
-    --light-color: #F5FDC6;
+    /* Cores padrão */
+    --pink: #b9113f; 
+    --rose: #a8636e; 
+    --azul-claro: #1d7c5d; 
+    --beje: #cfcca8; 
+    --rosa-claro: #f7d5eb;
+    --cinza-escuro: #242424; 
+    --preto: #000000;
+    --white: #ffffff;
 }
