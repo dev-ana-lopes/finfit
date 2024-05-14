@@ -1,0 +1,76 @@
+@import "../styles/global.css";
+
+.bg-azul-claro {
+    background-color: var(--azul-claro);
+    color: var(--preto);
+}
+
+.bg-rosa-claro {
+    background-color: var(--rosa-claro);
+    color: var(--preto);
+}
+
+.bg-pink {
+    background-color: var(--pink);
+    color: white;
+}
+
+.btn-pink-out {
+    border-color: var(--pink);
+    background-color: var(--rosa-claro);
+    color: var(--pink);
+}
+
+.btn-pink {
+    border-color: var(--pink);
+    background-color: var(--pink);
+    color: white;
+}
+
+.tc-pink {
+    color: var(--pink)
+}
+
+
+.logo img {
+    max-width: 100px;
+}
+
+.menu ul {
+    list-style-type: none;
+}
+
+.menu ul li {
+    display: inline;
+    margin-left: 10px;
+}
+
+.menu ul li:first-child {
+    margin-left: 0;
+}
+
+main section {
+    margin-bottom: 30px;
+}
+
+li a {
+    text-decoration: none;
+}
+
+.hg-img {
+    height: 36px;
+    width: 40px;
+
+}
+
+body {
+    background-image: linear-gradient(180deg, var(--bs-secondary-bg), var(--bs-body-bg) 100px, var(--bs-body-bg));
+  }
+  
+  .container {
+    max-width: 960px;
+  }
+  
+  .pricing-header {
+    max-width: 700px;
+  }
