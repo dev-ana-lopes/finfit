@@ -1,3 +1,10 @@
-from django.shortcuts import render
+from django.http import JsonResponse
+from financas.models import Usuario
 
-# Create your views here.
+def usuarios(request):
+    if request.method == 'GET':
+        usuario = {'id':1, 'nome': 'Guilherme'}
+
+        return JsonResponse(usuario)
+
+
