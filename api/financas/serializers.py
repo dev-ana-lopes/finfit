@@ -4,7 +4,7 @@ from financas.models import Usuario, Categoria, Credito, Debito
 class UsuarioSerializer(serializers.ModelSerializer):
     class Meta:
         model = Usuario
-        fields = ['id', 'nome', 'data_nascimento', 'email']
+        fields = ['id', 'nome', 'data_nascimento', 'email', 'ativo']
 
 class CategoriaSerializer(serializers.ModelSerializer):
     class Meta:
