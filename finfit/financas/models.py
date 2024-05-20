@@ -4,6 +4,7 @@ class Usuario(models.Model):
     nome = models.CharField(max_length=200)
     data_nascimento = models.DateField()
     email = models.EmailField(unique=True)
+    ativo = models.BooleanField(default=True, null=False)
     
     def __str__(self):
         return self.nome

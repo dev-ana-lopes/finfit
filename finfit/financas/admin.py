@@ -2,7 +2,7 @@ from django.contrib import admin
 from financas.models import Usuario, Categoria, Debito, Credito
 
 class Usuarios(admin.ModelAdmin):
-    list_display = ('id', 'nome', 'data_nascimento', 'email')
+    list_display = ('id', 'nome', 'data_nascimento', 'email', 'ativo')
     list_display_links = ('id', 'nome')
     search_fields = ('nome',)
     list_per_page = 20
