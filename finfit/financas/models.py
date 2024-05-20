@@ -10,9 +10,12 @@ class Usuario(models.Model):
 
 class Categoria(models.Model):
     titulo_categoria = models.CharField(max_length=50)
-    descricao = models.TextField(max_length=250)
-    icone = models.ImageField()
-    
+    descricao = models.TextField(max_length=250, blank=True)
+    TIPO = (
+        ('C', 'Crédito'),
+        ('D', 'Débito')
+    )
+    tipo = models.CharField(max_length=1, choices=TIPO, default='D')
     def __str__(self):
         return self.titulo_categoria
     
@@ -20,21 +23,20 @@ class Credito(models.Model):
     usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
     titulo_credito = models.CharField(max_length=50)
     data_entrada = models.DateField()
-    valor = models.FloatField()
-    categoria = models.CharField()
-    descricao = models.TextField()
+    valor = models.DecimalField(max_digits=10, decimal_places=2)
+    categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE)
+    descricao = models.TextField(max_length=250, blank=True)
     
     def __str__(self):
-        return self.valor
+        return self.titulo_credito
     
 class Debito(models.Model):
     usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
     categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE)
     titulo_debito = models.CharField(max_length=50)
     data_saida = models.DateField()
-    valor = models.FloatField()
-    descricao = models.TextField(max_length=250)
+    valor = models.DecimalField(max_digits=10, decimal_places=2)
+    descricao = models.TextField(max_length=250, blank=True)
 
     def __str__(self):
-        return self.valor
-    
+        return self.titulo_debito

@@ -1,10 +1,16 @@
 from django.contrib import admin
-from django.urls import path
-from financas.views import usuarios
+from django.urls import path, include
+from financas.views import *
+from rest_framework import routers
 
+router = routers.DefaultRouter()
+router.register('usuario', UsuariosViewSet, basename='Usuario')
+router.register('categoria', CategoriasViewSet, basename='Categoria')
+router.register('credito', CreditosViewSet, basename='Credito')
+router.register('debito', DebitosViewSet, basename='Debito')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('usuarios/', usuarios),
+    path('', include(router.urls)),
     
 ]
