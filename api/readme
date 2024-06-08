@@ -1,0 +1,135 @@
+# FinFit Project
+
+Este é o projeto FinFit desenvolvido em Django, utilizando PostgreSQL como banco de dados e Django REST framework para criar APIs. Este guia irá ajudá-lo a configurar o ambiente de desenvolvimento e a executar o projeto localmente.
+
+## Requisitos
+
+- Python 3.12+
+- PostgreSQL
+- Git
+
+## Instalação
+
+### 1. Clonar o repositório
+
+Primeiro, clone o repositório para a sua máquina local:
+
+```bash
+git clone https://github.com/seu-usuario/finfit.git
+cd finfit
+
+2. Criar e ativar um ambiente virtual
+
+Crie e ative um ambiente virtual para isolar as dependências do projeto:
+
+bash
+
+python3 -m venv .venv
+source .venv/bin/activate  # No Windows, use: .venv\Scripts\activate
+
+
+3. Instalar o PostgreSQL
+
+Se você ainda não tem o PostgreSQL instalado, instale-o seguindo os passos abaixo:
+
+bash
+
+sudo apt update
+sudo apt install postgresql postgresql-contrib
+
+5. Configurar o banco de dados PostgreSQL
+
+    Inicie o serviço PostgreSQL (se ainda não estiver rodando):
+
+bash
+
+sudo systemctl start postgresql
+
+    Crie um banco de dados e um usuário para o projeto:
+
+bash
+
+sudo -u postgres psql
+
+No console do PostgreSQL, execute os seguintes comandos:
+
+sql
+
+CREATE DATABASE db_finfit;
+CREATE USER finfituser WITH PASSWORD 'sua_senha';
+ALTER ROLE finfituser SET client_encoding TO 'utf8';
+ALTER ROLE finfituser SET default_transaction_isolation TO 'read committed';
+ALTER ROLE finfituser SET timezone TO 'UTC';
+GRANT ALL PRIVILEGES ON DATABASE finfit TO finfituser;
+\q
+
+6. Configurar variáveis de ambiente
+
+Crie um arquivo .env na raiz do projeto para armazenar suas variáveis de ambiente (não se esqueça de adicionar este arquivo ao .gitignore para não versioná-lo):
+
+bash
+
+touch .env
+
+Adicione as seguintes variáveis ao arquivo .env:
+
+env
+
+DB_NAME=db_finfit
+DB_USER=finfituser
+DB_PASSWORD=sua_senha
+DB_HOST=localhost
+DB_PORT=5432
+SECRET_KEY=sua_chave_secreta_django
+DEBUG=True
+
+7. Aplicar migrações e criar superusuário
+
+Aplique as migrações do banco de dados e crie um superusuário para acessar o admin do Django:
+
+bash
+
+python manage.py migrate
+python manage.py createsuperuser
+
+8. Executar o servidor de desenvolvimento
+
+Inicie o servidor de desenvolvimento do Django:
+
+bash
+
+python manage.py runserver
+
+Acesse o projeto em http://127.0.0.1:8000/ e o admin em http://127.0.0.1:8000/admin/.
+Django REST framework
+
+Para criar e testar APIs, você pode utilizar o Django REST framework. As configurações e as rotas da API estão definidas no aplicativo api.
+Exemplo de configuração do Django REST framework
+
+    Adicione 'rest_framework' em INSTALLED_APPS no arquivo settings.py:
+
+python
+
+INSTALLED_APPS = [
+    ...
+    'rest_framework',
+    'api',
+]
+
+    Defina um modelo, serializer e view para criar uma API. Veja api/models.py, api/serializers.py e api/views.py para exemplos.
+
+    Inclua as rotas da API em api/urls.py e no arquivo urls.py do projeto principal:
+
+python
+
+from django.urls import path, include
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('api/', include('api.urls')),
+]
+
+Licença
+
+Este projeto está licenciado sob os termos da licença MIT. Veja o arquivo LICENSE para mais detalhes.
+
