@@ -26,6 +26,7 @@ bash
 
 python3 -m venv .venv
 source .venv/bin/activate  # No Windows, use: .venv\Scripts\activate
+python -m pip install django-cors-headers
 
 
 3. Instalar o PostgreSQL
@@ -55,7 +56,7 @@ No console do PostgreSQL, execute os seguintes comandos:
 
 sql
 
-CREATE DATABASE db_finfit;
+CREATE DATABASE finfitdb;
 CREATE USER finfituser WITH PASSWORD 'sua_senha';
 ALTER ROLE finfituser SET client_encoding TO 'utf8';
 ALTER ROLE finfituser SET default_transaction_isolation TO 'read committed';
@@ -75,7 +76,7 @@ Adicione as seguintes variáveis ao arquivo .env:
 
 env
 
-DB_NAME=db_finfit
+DB_NAME=finfitdb
 DB_USER=finfituser
 DB_PASSWORD=sua_senha
 DB_HOST=localhost

@@ -1,15 +1,22 @@
 from django.db import models
+from django.utils import timezone
 
 class Usuario(models.Model):
-    nome = models.CharField(max_length=200)
+    id = models.AutoField(primary_key=True)
+    nome = models.CharField(max_length=255)
     data_nascimento = models.DateField()
-    email = models.EmailField(unique=True)
-    ativo = models.BooleanField(default=True, null=False)
+    email = models.EmailField(unique=True, max_length=255)
+    senha = models.CharField(max_length=20)
+    ativo = models.BooleanField(default=True)
+    aceite_termo = models.BooleanField(default=True)
+    created_at = models.DateTimeField(default=timezone.now)
+    updated_at = models.DateTimeField(auto_now=True)
     
     def __str__(self):
         return self.nome
 
 class Categoria(models.Model):
+    id = models.AutoField(primary_key=True)
     titulo_categoria = models.CharField(max_length=50)
     descricao = models.TextField(max_length=250, blank=True)
     TIPO = (
@@ -22,6 +29,7 @@ class Categoria(models.Model):
         return self.titulo_categoria
     
 class Credito(models.Model):
+    id = models.AutoField(primary_key=True)
     usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
     categoria = models.ForeignKey(Categoria, on_delete=models.PROTECT)
     titulo_credito = models.CharField(max_length=50)
@@ -33,6 +41,7 @@ class Credito(models.Model):
         return self.titulo_credito
     
 class Debito(models.Model):
+    id = models.AutoField(primary_key=True)
     usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
     categoria = models.ForeignKey(Categoria, on_delete=models.PROTECT)
     titulo_debito = models.CharField(max_length=50)
